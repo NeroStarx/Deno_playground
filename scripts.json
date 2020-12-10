@@ -2,9 +2,9 @@
   "$schema": "https://deno.land/x/denon/schema.json",
   "scripts": {
     "start": {
-      "cmd": "deno run server.js",
-      "desc": "run my server.js file",
-      "allow":["net"]
+      "cmd": "deno run Server.ts",
+      "allow": ["env","net"],
+      "env": { "PORT" : "8080" }
     }
   }
 }
