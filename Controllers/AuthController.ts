@@ -1,8 +1,15 @@
 import {client} from "../Db.ts"
+import { Database } from "../Dependencies.ts"
+import User from "../Model/User.ts"
+
+
 
 class AuthController{
-
+    
     async register({request,response}:{request:any,response: any}){
+        const db = new Database(client)
+        db.link([User])
+        await db.sync({ drop: true });
         const body = await request.body() 
         const user = body.value
         if(!request.hasBody){
@@ -13,9 +20,12 @@ class AuthController{
         }
         }else{
             try{
-                await client.connect()
-                const result = await client.query("INSERT INTO users(username,email,password) VALUES($1,$2,$3)"
-                ,user.username,user.email,user.password)
+                
+                await User.create({
+                    username: user.username,
+                    email: user.email,
+                    password: user.password,
+                  });
                 response.status = 201
                 response.body = {
                     success: true,
@@ -24,11 +34,12 @@ class AuthController{
             }catch(err){
                 response.status = 500
                 response.body = {
-                    success: true,
-                    message: "err.toString()"
+                    success: false,
+                    message: err.toString()
                 }
+                console.log(err.toString())
             }finally{
-                await client.end();
+                await client.close();
             }
             
         

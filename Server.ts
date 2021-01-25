@@ -1,7 +1,7 @@
 import { Application } from "./Dependencies.ts"
 import router from "./Routes.ts"
 
-const port = 6000 || Deno.env.get("PORT")
+const port = 9001 || Deno.env.get("PORT")
 
 const app = new Application()
 

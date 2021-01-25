@@ -4,7 +4,7 @@
     "start": {
       "cmd": "deno run Server.ts",
       "allow": ["env","net"],
-      "env": { "PORT" : "8080" }
+      "env": { "PORT" : "6000" }
     }
   }
 }

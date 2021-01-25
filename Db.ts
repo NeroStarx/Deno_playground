@@ -1,11 +1,11 @@
-import { Client } from "./Dependencies.ts"
+import { PostgresConnector } from "./Dependencies.ts"
 
 
 
-export const client = new Client({
-    user: "postgres",
-    database: "deno",
-    hostname: "localhost",
-    password: "",
-    port: 54595,
+export const client = new PostgresConnector({
+    username: "nerostarx",
+    database: "deno_pg",
+    host: "localhost",
+    password: "passcode",
+    port: 5432,
     })
