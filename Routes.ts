@@ -1,8 +1,9 @@
-import { Router } from "./Dependencies.ts"
-import { authController } from "./Controllers/AuthController.ts"
+import { Router } from "./Dependencies.ts";
+import { authController } from "./Controllers/AuthController.ts";
 
-const router = new Router()
+const router = new Router();
 
 router.post("/api/register_user", authController.register)
+        .post("/api/login", authController.login);
 
-export default router
+export default router;
